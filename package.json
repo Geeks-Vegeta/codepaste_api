@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "serve": "nodemon app.ts",
-    "start":"node app.ts",
+    "start":"npx tsx app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
