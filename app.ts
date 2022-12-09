@@ -17,6 +17,8 @@ let uri:string = process.env.MONGODB_URI;
 mongoose.connect(uri).then(()=>console.log("connected successfully"))
 
 
+app.get("/", (req, res)=>res.json({"message":"API Initial Route"}));
+
 // middlewares
 app.use(express.json());
 app.use("/lang", langRouter);
