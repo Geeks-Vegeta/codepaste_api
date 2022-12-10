@@ -29,7 +29,7 @@ export const addCodeBySlug=async(req:Request, res:Response)=>{
             "slug":slug
         })
         data.save();
-        res.json({"data":data});
+        res.send(data);
         
     } catch (error) {
         console.log(error);
