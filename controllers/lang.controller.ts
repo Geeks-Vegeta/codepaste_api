@@ -5,7 +5,7 @@ export const  getAllLang=async(req:Request, res:Response)=>{
 
     try {
 
-        let alllang = langModel.find();
+        let alllang = await langModel.find();
         res.send(alllang);
         
     } catch (error) {
@@ -20,7 +20,7 @@ export const addLang = async(req:Request, res:Response)=>{
 
     try {
 
-        let searchlang = langModel.findOne({"lang":lang})
+        let searchlang = await langModel.findOne({"lang":lang});
         if(searchlang) return res.json({"message":"Langauge already exists"});
 
         let addlang = new langModel({
@@ -28,7 +28,9 @@ export const addLang = async(req:Request, res:Response)=>{
         })
 
         addlang.save();
-        res.json({"message":"Language added"})
+
+
+        res.json({"message":"Language added"});
         
     } catch (error) {
         console.log(error);

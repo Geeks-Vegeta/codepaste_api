@@ -1,12 +1,12 @@
 import {Request, Response} from 'express';
 import pasteModel from '../models/pasteModel';
 
-export const getCodeBySlug=(req:Request, res:Response)=>{
+export const getCodeBySlug=async(req:Request, res:Response)=>{
 
     let {slug} = req.query;
 
     try {
-        let data = pasteModel.findOne({"slug":slug});
+        let data = await pasteModel.findOne({"slug":slug});
         if(!data) return res.status(404).json({"message":"No match found"});
         res.send(data);
         
@@ -16,7 +16,7 @@ export const getCodeBySlug=(req:Request, res:Response)=>{
 }
 
 
-export const addCodeBySlug=(req:Request, res:Response)=>{
+export const addCodeBySlug=async(req:Request, res:Response)=>{
 
     let {code, lang} = req.body;
     let slug:string = Math.random().toString(36).slice(-10);
@@ -29,7 +29,7 @@ export const addCodeBySlug=(req:Request, res:Response)=>{
             "slug":slug
         })
         data.save();
-        res.json({"message":"slug created"});
+        res.json({"data":data});
         
     } catch (error) {
         console.log(error);
