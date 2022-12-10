@@ -19,7 +19,7 @@ export const getCodeBySlug=async(req:Request, res:Response)=>{
 export const addCodeBySlug=async(req:Request, res:Response)=>{
 
     let {code, lang} = req.body;
-    let slug:string = Math.random().toString(36).slice(-10);
+    let slug:string = Math.random().toString(36).slice(-8);
 
     try {
 
